@@ -10,9 +10,11 @@ contract DeployFactoryCache is Script {
     function setUp() public {}
 
     function run() public {
+        address uniswapPositionManager = vm.envAddress("UNISWAP_POSITION_MANAGER");
+        
         vm.startBroadcast();
 
-        factoryCache = new FactoryCache();
+        factoryCache = new FactoryCache(uniswapPositionManager);
 
         vm.stopBroadcast();
     }
